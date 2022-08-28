@@ -18,6 +18,7 @@ public class IndexController {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
     private final UserRepository userRepository;
 
+
     public IndexController(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
