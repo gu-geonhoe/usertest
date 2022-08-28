@@ -8,7 +8,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.PostConstruct;
 import javax.validation.constraints.Positive;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -28,6 +30,14 @@ public class QuestionIndexController {
 //     questionRepository.save(question);
 //     return "redirect:/question";
 //    }
+@PostConstruct
+public void init(){
+    questionRepository.save(new Question(10L,"제목1","내용1","작성자1", LocalDateTime.now()));
+    questionRepository.save(new Question(11L,"제목2","내용2","작성자2", LocalDateTime.now()));
+    questionRepository.save(new Question(12L,"제목3","내용3","작성자3", LocalDateTime.now()));
+
+
+}
 
     @PostMapping("/question/write")
     public ResponseEntity questionWrite(Question question){

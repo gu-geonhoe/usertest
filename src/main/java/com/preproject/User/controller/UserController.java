@@ -20,6 +20,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.PostConstruct;
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 import java.util.List;
@@ -85,6 +86,13 @@ private final UserRepository userRepository;
 //    return "redirect:/user/login";
 //}
 
+    @PostConstruct
+    public void init(){
+      userRepository.save(new User(10L,"김코딩","kcd@asd.com","1234"));
+        userRepository.save(new User(11L,"박코딩","kcd2@asd.com","1234"));
+        userRepository.save(new User(12L,"이코딩","kcd3@asd.com","1234"));
+        userRepository.save(new User(13L,"구코딩","kcd4@asd.com","1234"));
+    }
 
 
     @GetMapping("/mypage/{user-id}")//회원 정보 조회  , 다른 회원 조회 기능은 추가 예정??
