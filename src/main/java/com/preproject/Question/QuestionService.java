@@ -8,6 +8,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -24,9 +25,12 @@ public class QuestionService {
         return  findVerifiedQuestion(questionId);
     }
 
-    public Page<Question> findUsers(int page, int size) {
-        return questionRepository.findAll(PageRequest.of(page, size,
-                Sort.by("questionId").descending()));
+//    public Page<Question> findUsers(int page, int size) {
+//        return questionRepository.findAll(PageRequest.of(page, size,
+//                Sort.by("questionId").descending()));
+//    }
+    public List<Question> findUsers() {
+        return questionRepository.findAll();
     }
     public Question findVerifiedQuestion(long questionId) {
         Optional<Question> optionalMember =
